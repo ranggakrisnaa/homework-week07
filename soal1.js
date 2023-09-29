@@ -43,19 +43,23 @@ const pertanyaanInput = {
 
 // untuk melakukan perhitungan terhadap bangun datar
 async function main() {
-  const answer = await inquirer.prompt(question);
-  const pil = await inquirer.prompt(pertanyaanInput[answer.bangunDatar]);
+  try {
+    const answer = await inquirer.prompt(question);
+    const pil = await inquirer.prompt(pertanyaanInput[answer.bangunDatar]);
 
-  if (answer.bangunDatar === "Persegi") {
-    const luas = hitungLuasPersegi(pil.sisi);
-    const keliling = hitungKelilingPersegi(pil.sisi);
+    if (answer.bangunDatar === "Persegi") {
+      const luas = hitungLuasPersegi(pil.sisi);
+      const keliling = hitungKelilingPersegi(pil.sisi);
 
-    displayResult("persegi", luas, keliling);
-  } else {
-    const luas = hitungLuasPersegiPanjang(pil.panjang, pil.lebar);
-    const keliling = hitungKelilingPersegiPanjang(pil.panjang, pil.lebar);
+      displayResult("persegi", luas, keliling);
+    } else {
+      const luas = hitungLuasPersegiPanjang(pil.panjang, pil.lebar);
+      const keliling = hitungKelilingPersegiPanjang(pil.panjang, pil.lebar);
 
-    displayResult("persegi panjang", luas, keliling);
+      displayResult("persegi panjang", luas, keliling);
+    }
+  } catch (e) {
+    console.log(e);
   }
 }
 
