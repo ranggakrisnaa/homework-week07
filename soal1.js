@@ -9,7 +9,7 @@ const {
 const inquirer = require("inquirer");
 
 // menampung object question
-const question = [
+const listPertanyaan = [
   {
     type: "list",
     name: "bangunDatar",
@@ -19,7 +19,7 @@ const question = [
 ];
 
 // menampung array inputan bangun datar
-const pertanyaanInput = {
+const bangunDatarInput = {
   Persegi: [
     {
       type: "number",
@@ -44,8 +44,8 @@ const pertanyaanInput = {
 // untuk melakukan perhitungan terhadap bangun datar
 async function main() {
   try {
-    const answer = await inquirer.prompt(question);
-    const pil = await inquirer.prompt(pertanyaanInput[answer.bangunDatar]);
+    const answer = await inquirer.prompt(listPertanyaan);
+    const pil = await inquirer.prompt(bangunDatarInput[answer.bangunDatar]);
 
     if (answer.bangunDatar === "Persegi") {
       const luas = hitungLuasPersegi(pil.sisi);
